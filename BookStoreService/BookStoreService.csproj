@@ -57,8 +57,13 @@
     <Compile Include="EF\Order.cs" />
     <Compile Include="EF\Product.cs" />
     <Compile Include="EF\Promotion.cs" />
+    <Compile Include="Implementation\AccountService.cs" />
+    <Compile Include="Implementation\CategoryService.cs" />
+    <Compile Include="Implementation\GroupService.cs" />
     <Compile Include="Implementation\ProductService.cs" />
     <Compile Include="Interfaces\IAccount.cs" />
+    <Compile Include="Interfaces\ICategory.cs" />
+    <Compile Include="Interfaces\IGroup.cs" />
     <Compile Include="Interfaces\IModel.cs" />
     <Compile Include="Interfaces\IProduct.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

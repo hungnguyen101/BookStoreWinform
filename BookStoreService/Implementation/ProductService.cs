@@ -84,5 +84,10 @@ namespace BookStoreService.Implementation
             }
             return false;
         }
+
+        public List<Product> findProuctsByCategory(int id)
+        {
+            return db.Products.Where(p => p.Category == id).ToList();
+        }
     }
 }

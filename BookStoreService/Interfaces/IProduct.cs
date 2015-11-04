@@ -11,6 +11,7 @@ namespace BookStoreService.Interfaces
     [ServiceContract]
     public interface IProduct : IModel<Product>
     {
-        
+        [OperationContract]
+        List<Product> findProuctsByCategory(int id);
     }
 }
