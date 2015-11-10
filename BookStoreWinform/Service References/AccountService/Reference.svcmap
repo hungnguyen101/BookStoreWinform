@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="19dae776-e6d6-4d2a-8bd7-0c1979394802" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8080/account" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="account.disco" MetadataType="Disco" ID="90229acf-53d6-4d44-8a89-37e3c511d01b" SourceId="1" SourceUrl="http://localhost:8080/account?disco" />
+    <MetadataFile FileName="AccountService.wsdl" MetadataType="Wsdl" ID="09fe9598-6fd5-403b-8679-2ed04dce527f" SourceId="1" SourceUrl="http://localhost:8080/account?wsdl" />
+    <MetadataFile FileName="account.xsd" MetadataType="Schema" ID="7325f804-606d-4163-a027-8bda8f5a1d9c" SourceId="1" SourceUrl="http://localhost:8080/account?xsd=xsd2" />
+    <MetadataFile FileName="account1.xsd" MetadataType="Schema" ID="04a31725-f467-467d-954f-77a1aea8b501" SourceId="1" SourceUrl="http://localhost:8080/account?xsd=xsd1" />
+    <MetadataFile FileName="account2.xsd" MetadataType="Schema" ID="75ac8f36-47b2-4c37-9518-04be4cfce910" SourceId="1" SourceUrl="http://localhost:8080/account?xsd=xsd0" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

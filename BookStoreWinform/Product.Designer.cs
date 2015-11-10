@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnCapnhat = new System.Windows.Forms.Button();
             this.gvProduct = new System.Windows.Forms.DataGridView();
             this.lblName = new System.Windows.Forms.Label();
@@ -48,6 +48,11 @@
             this.cbLoai = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lblLoai = new System.Windows.Forms.Label();
+            this.threadInit = new System.ComponentModel.BackgroundWorker();
+            this.pbLoadInitForm = new System.Windows.Forms.ProgressBar();
+            this.threadLoadImage = new System.ComponentModel.BackgroundWorker();
+            this.lblModified = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gvProduct)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvDescription)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -69,7 +74,8 @@
             this.gvProduct.AllowUserToAddRows = false;
             this.gvProduct.AllowUserToDeleteRows = false;
             this.gvProduct.AllowUserToOrderColumns = true;
-            this.gvProduct.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.gvProduct.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.gvProduct.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.gvProduct.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gvProduct.Location = new System.Drawing.Point(22, 53);
             this.gvProduct.Name = "gvProduct";
@@ -89,6 +95,7 @@
             this.lblName.Size = new System.Drawing.Size(67, 20);
             this.lblName.TabIndex = 3;
             this.lblName.Text = "Tên SP";
+            this.lblName.MouseHover += new System.EventHandler(this.lblName_MouseHover);
             // 
             // label3
             // 
@@ -111,7 +118,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(570, 135);
+            this.label4.Location = new System.Drawing.Point(570, 155);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(58, 13);
             this.label4.TabIndex = 10;
@@ -121,7 +128,7 @@
             // 
             this.lblTinhtrang.AutoSize = true;
             this.lblTinhtrang.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
-            this.lblTinhtrang.Location = new System.Drawing.Point(634, 135);
+            this.lblTinhtrang.Location = new System.Drawing.Point(634, 155);
             this.lblTinhtrang.Name = "lblTinhtrang";
             this.lblTinhtrang.Size = new System.Drawing.Size(35, 13);
             this.lblTinhtrang.TabIndex = 11;
@@ -147,14 +154,14 @@
             this.gvDescription.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.title,
             this.value});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gvDescription.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gvDescription.DefaultCellStyle = dataGridViewCellStyle2;
             this.gvDescription.Location = new System.Drawing.Point(451, 214);
             this.gvDescription.Name = "gvDescription";
             this.gvDescription.ReadOnly = true;
@@ -216,7 +223,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(570, 164);
+            this.label1.Location = new System.Drawing.Point(570, 184);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(79, 13);
             this.label1.TabIndex = 16;
@@ -225,17 +232,56 @@
             // lblLoai
             // 
             this.lblLoai.AutoSize = true;
-            this.lblLoai.Location = new System.Drawing.Point(655, 164);
+            this.lblLoai.Location = new System.Drawing.Point(655, 184);
             this.lblLoai.Name = "lblLoai";
             this.lblLoai.Size = new System.Drawing.Size(35, 13);
             this.lblLoai.TabIndex = 17;
             this.lblLoai.Text = "label2";
             // 
+            // threadInit
+            // 
+            this.threadInit.WorkerReportsProgress = true;
+            this.threadInit.DoWork += new System.ComponentModel.DoWorkEventHandler(this.threadInit_DoWork);
+            this.threadInit.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.threadInit_ProgressChanged);
+            this.threadInit.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.threadInit_RunWorkerCompleted);
+            // 
+            // pbLoadInitForm
+            // 
+            this.pbLoadInitForm.Location = new System.Drawing.Point(22, 516);
+            this.pbLoadInitForm.Name = "pbLoadInitForm";
+            this.pbLoadInitForm.Size = new System.Drawing.Size(782, 23);
+            this.pbLoadInitForm.TabIndex = 18;
+            // 
+            // threadLoadImage
+            // 
+            this.threadLoadImage.DoWork += new System.ComponentModel.DoWorkEventHandler(this.threadLoadImage_DoWork);
+            // 
+            // lblModified
+            // 
+            this.lblModified.AutoSize = true;
+            this.lblModified.Location = new System.Drawing.Point(629, 130);
+            this.lblModified.Name = "lblModified";
+            this.lblModified.Size = new System.Drawing.Size(35, 13);
+            this.lblModified.TabIndex = 20;
+            this.lblModified.Text = "label2";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(565, 130);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(58, 13);
+            this.label5.TabIndex = 19;
+            this.label5.Text = " Ngày sửa:";
+            // 
             // frmProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(827, 528);
+            this.ClientSize = new System.Drawing.Size(827, 547);
+            this.Controls.Add(this.lblModified);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.pbLoadInitForm);
             this.Controls.Add(this.lblLoai);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cbLoai);
@@ -282,6 +328,11 @@
         private System.Windows.Forms.ComboBox cbLoai;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblLoai;
+        private System.ComponentModel.BackgroundWorker threadInit;
+        private System.Windows.Forms.ProgressBar pbLoadInitForm;
+        private System.ComponentModel.BackgroundWorker threadLoadImage;
+        private System.Windows.Forms.Label lblModified;
+        private System.Windows.Forms.Label label5;
     }
 }
 

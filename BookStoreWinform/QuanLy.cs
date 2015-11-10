@@ -28,5 +28,11 @@ namespace BookStoreWinform
             frmCategory frm = new frmCategory();
             frm.Show();
         }
+
+        private void btnTaikhoan_Click(object sender, EventArgs e)
+        {
+            AccountForm frm = new AccountForm();
+            frm.Show();
+        }
     }
 }

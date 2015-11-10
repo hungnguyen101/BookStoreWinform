@@ -50,6 +50,9 @@
             this.value = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnUpdate = new System.Windows.Forms.Button();
             this.chbHienthi = new System.Windows.Forms.CheckBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.threadLoadImage = new System.ComponentModel.BackgroundWorker();
+            this.threadUpload = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.picThumbnail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numSoluong)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvDescription)).BeginInit();
@@ -149,7 +152,7 @@
             this.cbLoai.FormattingEnabled = true;
             this.cbLoai.Location = new System.Drawing.Point(283, 155);
             this.cbLoai.Name = "cbLoai";
-            this.cbLoai.Size = new System.Drawing.Size(219, 21);
+            this.cbLoai.Size = new System.Drawing.Size(148, 21);
             this.cbLoai.TabIndex = 10;
             // 
             // label6
@@ -248,11 +251,31 @@
             this.chbHienthi.Text = "Hiển thị";
             this.chbHienthi.UseVisualStyleBackColor = true;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(439, 153);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(63, 23);
+            this.button1.TabIndex = 20;
+            this.button1.Text = "Tạo mới";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // threadLoadImage
+            // 
+            this.threadLoadImage.DoWork += new System.ComponentModel.DoWorkEventHandler(this.threadLoadImage_DoWork);
+            // 
+            // threadUpload
+            // 
+            this.threadUpload.DoWork += new System.ComponentModel.DoWorkEventHandler(this.threadUpload_DoWork);
+            this.threadUpload.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.threadUpload_RunWorkerCompleted);
+            // 
             // AddProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(526, 514);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.chbHienthi);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.gvDescription);
@@ -309,5 +332,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn value;
         private System.Windows.Forms.Button btnUpdate;
         private System.Windows.Forms.CheckBox chbHienthi;
+        private System.Windows.Forms.Button button1;
+        private System.ComponentModel.BackgroundWorker threadLoadImage;
+        private System.ComponentModel.BackgroundWorker threadUpload;
     }
 }

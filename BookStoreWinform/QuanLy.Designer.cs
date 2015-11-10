@@ -30,11 +30,12 @@
         {
             this.btnSanpham = new System.Windows.Forms.Button();
             this.btnLoaisanpham = new System.Windows.Forms.Button();
+            this.btnTaikhoan = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnSanpham
             // 
-            this.btnSanpham.Location = new System.Drawing.Point(83, 72);
+            this.btnSanpham.Location = new System.Drawing.Point(83, 36);
             this.btnSanpham.Name = "btnSanpham";
             this.btnSanpham.Size = new System.Drawing.Size(95, 23);
             this.btnSanpham.TabIndex = 0;
@@ -44,7 +45,7 @@
             // 
             // btnLoaisanpham
             // 
-            this.btnLoaisanpham.Location = new System.Drawing.Point(83, 147);
+            this.btnLoaisanpham.Location = new System.Drawing.Point(83, 99);
             this.btnLoaisanpham.Name = "btnLoaisanpham";
             this.btnLoaisanpham.Size = new System.Drawing.Size(95, 23);
             this.btnLoaisanpham.TabIndex = 1;
@@ -52,11 +53,22 @@
             this.btnLoaisanpham.UseVisualStyleBackColor = true;
             this.btnLoaisanpham.Click += new System.EventHandler(this.btnLoaisanpham_Click);
             // 
+            // btnTaikhoan
+            // 
+            this.btnTaikhoan.Location = new System.Drawing.Point(83, 162);
+            this.btnTaikhoan.Name = "btnTaikhoan";
+            this.btnTaikhoan.Size = new System.Drawing.Size(95, 23);
+            this.btnTaikhoan.TabIndex = 2;
+            this.btnTaikhoan.Text = " Tài khoản";
+            this.btnTaikhoan.UseVisualStyleBackColor = true;
+            this.btnTaikhoan.Click += new System.EventHandler(this.btnTaikhoan_Click);
+            // 
             // QuanLy
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.btnTaikhoan);
             this.Controls.Add(this.btnLoaisanpham);
             this.Controls.Add(this.btnSanpham);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
@@ -71,5 +83,6 @@
 
         private System.Windows.Forms.Button btnSanpham;
         private System.Windows.Forms.Button btnLoaisanpham;
+        private System.Windows.Forms.Button btnTaikhoan;
     }
 }

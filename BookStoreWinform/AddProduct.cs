@@ -24,29 +24,29 @@ namespace BookStoreWinform
         Category[] cats = null;
         string filename = "";
         string existThumbnail = "";
+        string sBtn = "";
+        CategoryService.CategoryClient catSV;
 
         public AddProduct(int mode, long product = 0)
         {
             InitializeComponent();
-            CategoryService.CategoryClient catSV = new CategoryClient();
-            cats = catSV.findAll();
-            List<string> catName = new List<string>();
-            foreach (Category c in cats)
-                catName.Add(c.Name);
-            cbLoai.DataSource = catName;
+            
+            catSV = new CategoryClient();
+            initLoaiSP();
+
             this.mode = mode;
             if (mode == 1)
-                btnUpdate.Text = "Thêm sản phẩm";
+                sBtn = "Thêm sản phẩm";
             if (mode == 2)
             {
                 entity.id = product;
-                btnUpdate.Text = "Cập nhật sản phẩm";
+                sBtn = "Cập nhật sản phẩm";
                 ProductClient sv = new ProductClient();
                 Product p = sv.findById(product);
                 if (p.Thumbnail != null)
                 {
-                    picThumbnail.Load(p.Thumbnail);
                     existThumbnail = p.Thumbnail;
+                    threadLoadImage.RunWorkerAsync(p.Thumbnail);
                 }
                     
                 txtName.Text = p.Name;
@@ -71,6 +71,16 @@ namespace BookStoreWinform
                 }
 
             }
+            btnUpdate.Text = sBtn;
+        }
+
+        private void initLoaiSP()
+        {
+            cats = catSV.findAll();
+            List<string> catName = new List<string>();
+            foreach (Category c in cats)
+                catName.Add(c.Name);
+            cbLoai.DataSource = catName;
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -94,6 +104,8 @@ namespace BookStoreWinform
                     break;
                 case 2:
                     LoadEntity();
+                    entity.ModifiedAt = DateTime.Now;
+                    entity.ModifiedBy = CurrentUser.Username;
                     if (filename != "")
                         entity.Thumbnail = UploadImage();
                     sv = new ProductClient();
@@ -117,6 +129,7 @@ namespace BookStoreWinform
             entity.Status = chbHoatdong.Checked;
             entity.ShowOnHome = chbHienthi.Checked;
             entity.CreatedAt = DateTime.Now;
+            entity.CreatedBy = CurrentUser.Username;
             entity.Thumbnail = (existThumbnail.Trim().Length > 0) ? existThumbnail : null;
 
             StringBuilder sb = new StringBuilder();
@@ -164,6 +177,35 @@ namespace BookStoreWinform
             JObject json = JObject.Parse(responseString);
             string link = json["data"]["link"].ToString();
             return link;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            AddCategory frm = new AddCategory();
+            frm.Show();
+            frm.FormClosed += frm_FormClosed;
+        }
+
+        void frm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            cbLoai.DataSource = null;
+            initLoaiSP();
+            cbLoai.SelectedIndex = cbLoai.Items.Count - 1;
+        }
+
+        private void threadLoadImage_DoWork(object sender, DoWorkEventArgs e)
+        {
+            picThumbnail.Load(e.Argument.ToString());
+        }
+
+        private void threadUpload_DoWork(object sender, DoWorkEventArgs e)
+        {
+            
+        }
+
+        private void threadUpload_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            
         }
     }
 }

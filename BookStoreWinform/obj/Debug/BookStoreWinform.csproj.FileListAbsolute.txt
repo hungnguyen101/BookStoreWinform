@@ -17,3 +17,6 @@ E:\web\asp\BookStoreWinform\BookStoreWinform\bin\Debug\Newtonsoft.Json.xml
 E:\web\asp\BookStoreWinform\BookStoreWinform\obj\Debug\BookStoreWinform.QuanLy.resources
 E:\web\asp\BookStoreWinform\BookStoreWinform\obj\Debug\BookStoreWinform.frmCategory.resources
 E:\web\asp\BookStoreWinform\BookStoreWinform\obj\Debug\BookStoreWinform.AddCategory.resources
+E:\web\asp\BookStoreWinform\BookStoreWinform\obj\Debug\BookStoreWinform.LoginForm.resources
+E:\web\asp\BookStoreWinform\BookStoreWinform\obj\Debug\BookStoreWinform.AccountForm.resources
+E:\web\asp\BookStoreWinform\BookStoreWinform\obj\Debug\BookStoreWinform.AccountDetailForm.resources

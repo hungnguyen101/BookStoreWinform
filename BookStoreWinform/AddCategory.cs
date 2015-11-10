@@ -52,7 +52,7 @@ namespace BookStoreWinform
                 cat.CreatedAt = DateTime.Now;
                 cat.CreatedBy = null;
                 cat.Name = txtName.Text;
-                cat.ParentID = parents[cbParent.SelectedIndex].id;
+                cat.ParentID = (cbParent.SelectedIndex > 0) ? parents[cbParent.SelectedIndex].id : 0;
                 cat.Status = chbStatus.Checked;
                 if (sv.insert(cat) > 0)
                     MessageBox.Show("Thành công");

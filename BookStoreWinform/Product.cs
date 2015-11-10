@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BookStoreWinform.ProductSV;
 using BookStoreWinform.CategoryService;
+using System.Threading;
+using System.Reflection;
 
 namespace BookStoreWinform
 {
@@ -19,11 +21,17 @@ namespace BookStoreWinform
         Product[] products;
 
         Category[] categories;
+        Product p = null;
 
         public frmProduct()
         {
             InitializeComponent();
-            
+
+            threadInit.RunWorkerAsync();
+        }
+
+        public void frmProductInit()
+        {
             sv = new ProductClient();
             svCat = new CategoryClient();
             products = sv.findAll();
@@ -50,16 +58,18 @@ namespace BookStoreWinform
         private void showProduct(long index)
         {
             resetField();
-            Product p = products[index];
+            p = products[index];
             if (p.Thumbnail != null)
-                pictureBox1.Load(p.Thumbnail);
-            lblName.Text = p.Name;
-            lblCreatedBy.Text = p.CreatedAt.Value.ToShortDateString();
+                threadLoadImage.RunWorkerAsync();
+            lblName.Text = (p.Name.Length <= 40) ? p.Name : p.Name.Substring(0,40) + "...";
+            lblCreatedBy.Text = p.CreatedAt.Value.ToShortDateString() + " bởi " + p.CreatedBy;
+            lblModified.Text = (p.ModifiedAt.HasValue) ? p.ModifiedAt.Value.ToShortDateString() + " bởi " + p.ModifiedBy : "";
             lblLoai.Text = categories.SingleOrDefault(c => c.id == p.Category).Name;
             if (p.Status.Value)
             {
                 lblTinhtrang.Text = "Hoạt động";
                 lblTinhtrang.ForeColor = Color.Green;
+                lblTinhtrang.Text += (p.ShowOnHome.Value) ? " Hiện ngoài trang chủ" : " Ẩn ngoài trang chủ";
             }
             else
             {
@@ -102,6 +112,12 @@ namespace BookStoreWinform
         {
             AddProduct frmAdd = new AddProduct(1);
             frmAdd.Show();
+            frmAdd.FormClosed += frmAdd_FormClosed;
+        }
+
+        void frmAdd_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            frmProductInit();
         }
 
         private void gvProduct_MouseClick(object sender, MouseEventArgs e)
@@ -145,6 +161,38 @@ namespace BookStoreWinform
                 products = sv.findProuctsByCategory(categories[cbLoai.SelectedIndex - 1].id);
                 bindData();
             }
+        }
+
+        private void lblName_MouseHover(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void threadInit_DoWork(object sender, DoWorkEventArgs e)
+        {
+            sv = new ProductClient();
+            svCat = new CategoryClient();
+            products = sv.findAll();
+            threadInit.ReportProgress(60);
+            categories = svCat.findAll();
+            threadInit.ReportProgress(100);
+        }
+
+        private void threadInit_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            initComboBox();
+            showProduct(0);
+            bindData();
+        }
+
+        private void threadInit_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            pbLoadInitForm.Value = e.ProgressPercentage;
+        }
+
+        private void threadLoadImage_DoWork(object sender, DoWorkEventArgs e)
+        {
+            pictureBox1.Load(p.Thumbnail);
         }
 
     }
