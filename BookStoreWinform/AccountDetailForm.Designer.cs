@@ -42,10 +42,11 @@
             this.lblHoten = new System.Windows.Forms.Label();
             this.lblTaikhoan = new System.Windows.Forms.Label();
             this.lblEmail = new System.Windows.Forms.Label();
-            this.lblGroup = new System.Windows.Forms.Label();
-            this.btnTrangthai = new System.Windows.Forms.Button();
             this.threadInit = new System.ComponentModel.BackgroundWorker();
             this.threadLoadImage = new System.ComponentModel.BackgroundWorker();
+            this.cbGroup = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.chbStatus = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.picAvatar)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -70,7 +71,7 @@
             this.label1.Location = new System.Drawing.Point(188, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(45, 13);
-            this.label1.TabIndex = 1;
+            this.label1.TabIndex = 0;
             this.label1.Text = " Họ tên:";
             // 
             // label2
@@ -88,7 +89,7 @@
             this.label3.Location = new System.Drawing.Point(188, 88);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(38, 13);
-            this.label3.TabIndex = 3;
+            this.label3.TabIndex = 4;
             this.label3.Text = " Email:";
             // 
             // label4
@@ -97,7 +98,7 @@
             this.label4.Location = new System.Drawing.Point(188, 125);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(41, 13);
-            this.label4.TabIndex = 4;
+            this.label4.TabIndex = 6;
             this.label4.Text = " Nhóm:";
             // 
             // label5
@@ -106,7 +107,7 @@
             this.label5.Location = new System.Drawing.Point(188, 163);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(61, 13);
-            this.label5.TabIndex = 5;
+            this.label5.TabIndex = 8;
             this.label5.Text = " Trạng thái:";
             // 
             // tabControl1
@@ -117,7 +118,7 @@
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(406, 288);
-            this.tabControl1.TabIndex = 13;
+            this.tabControl1.TabIndex = 1;
             this.tabControl1.Selected += new System.Windows.Forms.TabControlEventHandler(this.tabControl1_Selected);
             // 
             // tabPage1
@@ -179,7 +180,7 @@
             this.lblTaikhoan.Location = new System.Drawing.Point(277, 52);
             this.lblTaikhoan.Name = "lblTaikhoan";
             this.lblTaikhoan.Size = new System.Drawing.Size(0, 13);
-            this.lblTaikhoan.TabIndex = 14;
+            this.lblTaikhoan.TabIndex = 3;
             // 
             // lblEmail
             // 
@@ -187,26 +188,8 @@
             this.lblEmail.Location = new System.Drawing.Point(277, 88);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(10, 13);
-            this.lblEmail.TabIndex = 15;
+            this.lblEmail.TabIndex = 5;
             this.lblEmail.Text = " ";
-            // 
-            // lblGroup
-            // 
-            this.lblGroup.AutoSize = true;
-            this.lblGroup.Location = new System.Drawing.Point(277, 125);
-            this.lblGroup.Name = "lblGroup";
-            this.lblGroup.Size = new System.Drawing.Size(10, 13);
-            this.lblGroup.TabIndex = 16;
-            this.lblGroup.Text = " ";
-            // 
-            // btnTrangthai
-            // 
-            this.btnTrangthai.Location = new System.Drawing.Point(280, 158);
-            this.btnTrangthai.Name = "btnTrangthai";
-            this.btnTrangthai.Size = new System.Drawing.Size(75, 23);
-            this.btnTrangthai.TabIndex = 17;
-            this.btnTrangthai.Text = "button1";
-            this.btnTrangthai.UseVisualStyleBackColor = true;
             // 
             // threadInit
             // 
@@ -217,13 +200,42 @@
             // 
             this.threadLoadImage.DoWork += new System.ComponentModel.DoWorkEventHandler(this.threadLoadImage_DoWork);
             // 
+            // cbGroup
+            // 
+            this.cbGroup.FormattingEnabled = true;
+            this.cbGroup.Location = new System.Drawing.Point(280, 122);
+            this.cbGroup.Name = "cbGroup";
+            this.cbGroup.Size = new System.Drawing.Size(121, 21);
+            this.cbGroup.TabIndex = 10;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(12, 494);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(402, 29);
+            this.button1.TabIndex = 11;
+            this.button1.Text = "Update";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // chbStatus
+            // 
+            this.chbStatus.AutoSize = true;
+            this.chbStatus.Location = new System.Drawing.Point(280, 162);
+            this.chbStatus.Name = "chbStatus";
+            this.chbStatus.Size = new System.Drawing.Size(80, 17);
+            this.chbStatus.TabIndex = 12;
+            this.chbStatus.Text = " Hoạt động";
+            this.chbStatus.UseVisualStyleBackColor = true;
+            // 
             // AccountDetailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(430, 500);
-            this.Controls.Add(this.btnTrangthai);
-            this.Controls.Add(this.lblGroup);
+            this.ClientSize = new System.Drawing.Size(430, 535);
+            this.Controls.Add(this.chbStatus);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.cbGroup);
             this.Controls.Add(this.lblEmail);
             this.Controls.Add(this.lblTaikhoan);
             this.Controls.Add(this.lblHoten);
@@ -265,9 +277,10 @@
         private System.Windows.Forms.Label lblHoten;
         private System.Windows.Forms.Label lblTaikhoan;
         private System.Windows.Forms.Label lblEmail;
-        private System.Windows.Forms.Label lblGroup;
-        private System.Windows.Forms.Button btnTrangthai;
         private System.ComponentModel.BackgroundWorker threadInit;
         private System.ComponentModel.BackgroundWorker threadLoadImage;
+        private System.Windows.Forms.ComboBox cbGroup;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.CheckBox chbStatus;
     }
 }

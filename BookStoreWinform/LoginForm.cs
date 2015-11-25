@@ -41,6 +41,10 @@ namespace BookStoreWinform
                     frm.FormClosed += frm_FormClosed;
                     this.Hide();
                 }
+                else if (acc.Status.Value == false)
+                {
+                    lblError.Text = "Tài khoản của bạn đã bị khoá!";
+                }
                 else
                 {
                     lblError.Text = "Xin lỗi, đây chỉ là tài khoản khách hàng";

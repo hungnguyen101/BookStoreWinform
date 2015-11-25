@@ -52,7 +52,7 @@ namespace BookStoreWinform
         private void gvAccount_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             gvAccount.Rows[e.RowIndex].Selected = true;
-            
+
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -76,31 +76,46 @@ namespace BookStoreWinform
 
         private void btnThem_Click(object sender, EventArgs e)
         {
+            AddAccount frm = new AddAccount();
+            frm.Show();
+            frm.FormClosed += frm_FormClosed;
+        }
 
+        void frm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            threadInit.RunWorkerAsync();
         }
 
         private void gvAccount_MouseClick(object sender, MouseEventArgs e)
         {
             if (e.Button == System.Windows.Forms.MouseButtons.Right)
             {
+                menuControl.Items[2].Enabled = (arrAccounts[gvAccount.CurrentRow.Index].Username == CurrentUser.Username);
                 menuControl.Show(Cursor.Position);
             }
         }
 
         private void menuControl_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
+            string currentEmail = gvAccount.CurrentRow.Cells["Email"].Value.ToString();
+            long id = arrAccounts.SingleOrDefault(a => a.Email.Equals(currentEmail)).id;
             switch (e.ClickedItem.ToString())
             {
                 case "Xem chi tiết":
-                    new AccountDetailForm(arrAccounts[gvAccount.CurrentRow.Index].id).Show();
+                    AccountDetailForm frm = new AccountDetailForm(id);
+                    frm.Show();
+                    frm.FormClosed += frm_FormClosed;
                     break;
                 case "Xoá":
                     DialogResult rs = MessageBox.Show("Chắc chắn xoá?", "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
                     if (rs == System.Windows.Forms.DialogResult.OK)
                     {
-                        accountSV.delete(arrAccounts[gvAccount.CurrentRow.Index].id);
+                        accountSV.delete(id);
                         threadInit.RunWorkerAsync();
                     }
+                    break;
+                case "Đổi mật khẩu":
+                    new ChangePassword(id).Show();
                     break;
             }
         }

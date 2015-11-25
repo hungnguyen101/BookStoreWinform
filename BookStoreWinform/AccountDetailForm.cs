@@ -8,23 +8,38 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BookStoreWinform.AccountService;
+using BookStoreWinform.GroupService;
 
 namespace BookStoreWinform
 {
     public partial class AccountDetailForm : Form
     {
         private AccountClient accountSV = null;
+        private GroupClient groupSV = null;
         Account account = null;
+        Group[] groups;
+
         public AccountDetailForm(long id)
         {
             InitializeComponent();
             accountSV = new AccountClient();
+            groupSV = new GroupClient();
             threadInit.RunWorkerAsync(id);
+            
+        }
+
+        public void initComboBox()
+        {
+            List<string> strGroupNames = new List<string>();
+            foreach (Group g in groups)
+                strGroupNames.Add(g.Name);
+            cbGroup.DataSource = strGroupNames;
         }
 
         private void threadInit_DoWork(object sender, DoWorkEventArgs e)
         {
             account = accountSV.findById(Convert.ToInt64(e.Argument));
+            groups = groupSV.findAll();
         }
 
         private void threadInit_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -32,8 +47,9 @@ namespace BookStoreWinform
             lblHoten.Text = account.Fullname;
             lblTaikhoan.Text = account.Username;
             lblEmail.Text = account.Email;
-            lblGroup.Text = account.GroupId;
-            btnTrangthai.Text = (account.Status.Value) ? "Vô hiệu hoá" : "Kích hoạt";
+            initComboBox();
+            cbGroup.SelectedItem = groups.SingleOrDefault(g => g.id.Equals(account.GroupId)).Name;
+            chbStatus.Checked = account.Status.Value;
             gvThongtin.Columns.Add("tieude", "Tiêu đề");
             gvThongtin.Columns.Add("thongtin", "Thông tin");
             gvThongtin.Rows.Add("Địa chỉ", account.Address);
@@ -61,6 +77,20 @@ namespace BookStoreWinform
             {
 
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            button1.Enabled = false;
+            account.ModifiedAt = DateTime.Now;
+            account.ModifiedBy = CurrentUser.Username;
+            account.Status = chbStatus.Checked;
+            account.GroupId = groups[cbGroup.SelectedIndex].id;
+            if (accountSV.update(account))
+                MessageBox.Show("Thành công");
+            else
+                MessageBox.Show("Thất bại");
+            button1.Enabled = true;
         }
 
     }

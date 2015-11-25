@@ -34,5 +34,11 @@ namespace BookStoreWinform
             AccountForm frm = new AccountForm();
             frm.Show();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Order frm = new Order();
+            frm.Show();
+        }
     }
 }

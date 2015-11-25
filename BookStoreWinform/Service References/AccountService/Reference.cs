@@ -391,6 +391,12 @@ namespace BookStoreWinform.AccountService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccount/findAccountsByGroup", ReplyAction="http://tempuri.org/IAccount/findAccountsByGroupResponse")]
         System.Threading.Tasks.Task<BookStoreWinform.AccountService.Account[]> findAccountsByGroupAsync(string groupID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccount/findAccountByUsername", ReplyAction="http://tempuri.org/IAccount/findAccountByUsernameResponse")]
+        BookStoreWinform.AccountService.Account findAccountByUsername(string username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IAccount/findAccountByUsername", ReplyAction="http://tempuri.org/IAccount/findAccountByUsernameResponse")]
+        System.Threading.Tasks.Task<BookStoreWinform.AccountService.Account> findAccountByUsernameAsync(string username);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -474,6 +480,14 @@ namespace BookStoreWinform.AccountService {
         
         public System.Threading.Tasks.Task<BookStoreWinform.AccountService.Account[]> findAccountsByGroupAsync(string groupID) {
             return base.Channel.findAccountsByGroupAsync(groupID);
+        }
+        
+        public BookStoreWinform.AccountService.Account findAccountByUsername(string username) {
+            return base.Channel.findAccountByUsername(username);
+        }
+        
+        public System.Threading.Tasks.Task<BookStoreWinform.AccountService.Account> findAccountByUsernameAsync(string username) {
+            return base.Channel.findAccountByUsernameAsync(username);
         }
     }
 }

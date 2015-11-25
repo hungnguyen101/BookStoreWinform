@@ -37,6 +37,7 @@
             this.menuControl = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.chỉnhSửaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.xoáToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.đổiMậtKhẩuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.gvAccount)).BeginInit();
             this.menuControl.SuspendLayout();
             this.SuspendLayout();
@@ -94,22 +95,29 @@
             // 
             this.menuControl.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.chỉnhSửaToolStripMenuItem,
-            this.xoáToolStripMenuItem});
+            this.xoáToolStripMenuItem,
+            this.đổiMậtKhẩuToolStripMenuItem});
             this.menuControl.Name = "menuControl";
-            this.menuControl.Size = new System.Drawing.Size(153, 70);
+            this.menuControl.Size = new System.Drawing.Size(146, 70);
             this.menuControl.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuControl_ItemClicked);
             // 
             // chỉnhSửaToolStripMenuItem
             // 
             this.chỉnhSửaToolStripMenuItem.Name = "chỉnhSửaToolStripMenuItem";
-            this.chỉnhSửaToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.chỉnhSửaToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.chỉnhSửaToolStripMenuItem.Text = "Xem chi tiết";
             // 
             // xoáToolStripMenuItem
             // 
             this.xoáToolStripMenuItem.Name = "xoáToolStripMenuItem";
-            this.xoáToolStripMenuItem.Size = new System.Drawing.Size(137, 22);
+            this.xoáToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
             this.xoáToolStripMenuItem.Text = "Xoá";
+            // 
+            // đổiMậtKhẩuToolStripMenuItem
+            // 
+            this.đổiMậtKhẩuToolStripMenuItem.Name = "đổiMậtKhẩuToolStripMenuItem";
+            this.đổiMậtKhẩuToolStripMenuItem.Size = new System.Drawing.Size(145, 22);
+            this.đổiMậtKhẩuToolStripMenuItem.Text = "Đổi mật khẩu";
             // 
             // AccountForm
             // 
@@ -140,5 +148,6 @@
         private System.Windows.Forms.ContextMenuStrip menuControl;
         private System.Windows.Forms.ToolStripMenuItem chỉnhSửaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem xoáToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem đổiMậtKhẩuToolStripMenuItem;
     }
 }
