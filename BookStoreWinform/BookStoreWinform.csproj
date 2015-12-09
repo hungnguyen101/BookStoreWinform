@@ -115,6 +115,7 @@
       <DependentUpon>ChangePassword.cs</DependentUpon>
     </Compile>
     <Compile Include="CurrentUser.cs" />
+    <Compile Include="DetailModel.cs" />
     <Compile Include="frmCategory.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,6 +134,7 @@
     <Compile Include="Order.Designer.cs">
       <DependentUpon>Order.cs</DependentUpon>
     </Compile>
+    <Compile Include="OrderModel.cs" />
     <Compile Include="Product.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -228,74 +230,74 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Service References\AccountService\account.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\AccountService\account1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\AccountService\account2.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\AccountService\AccountService.wsdl" />
+    <None Include="Service References\AccountService\AccountService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AccountService\AccountService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\AccountService\AccountService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\AccountService\BookStoreWinform.AccountService.Account.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\CategoryService\BookStoreWinform.CategoryService.Category.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\CategoryService\category.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\CategoryService\category1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\CategoryService\category2.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\CategoryService\CategoryService.wsdl" />
+    <None Include="Service References\CategoryService\CategoryService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CategoryService\CategoryService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\CategoryService\CategoryService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\GroupService\BookStoreWinform.GroupService.Group.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\GroupService\group.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\GroupService\group1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\GroupService\group2.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\GroupService\GroupService.wsdl" />
+    <None Include="Service References\GroupService\GroupService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\GroupService\GroupService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\GroupService\GroupService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\OrderService\BookStoreWinform.OrderService.DetailOrder.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\OrderService\BookStoreWinform.OrderService.Order.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\OrderService\order.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\OrderService\order1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\OrderService\order2.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\OrderService\OrderService.wsdl" />
+    <None Include="Service References\OrderService\OrderService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OrderService\OrderService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OrderService\OrderService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Service References\ProductSV\BookStoreWinform.ProductSV.Product.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\ProductSV\product.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ProductSV\product1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ProductSV\product2.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Service References\ProductSV\ProductService.wsdl" />
+    <None Include="Service References\ProductSV\ProductService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProductSV\ProductService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ProductSV\ProductService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -304,71 +306,7 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\AccountService\" />
-    <WCFMetadataStorage Include="Service References\CategoryService\" />
-    <WCFMetadataStorage Include="Service References\GroupService\" />
-    <WCFMetadataStorage Include="Service References\OrderService\" />
-    <WCFMetadataStorage Include="Service References\ProductSV\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\ProductSV\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\ProductSV\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\ProductSV\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\CategoryService\category.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\CategoryService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\CategoryService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\CategoryService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\thumbnail.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\AccountService\account.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\AccountService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\AccountService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\AccountService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\GroupService\group.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\GroupService\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\GroupService\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\GroupService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
@@ -388,7 +326,44 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\OrderService\order.disco" />
+    <WCFMetadataStorage Include="Service References\AccountService\" />
+    <WCFMetadataStorage Include="Service References\CategoryService\" />
+    <WCFMetadataStorage Include="Service References\GroupService\" />
+    <WCFMetadataStorage Include="Service References\OrderService\" />
+    <WCFMetadataStorage Include="Service References\ProductSV\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProductSV\ProductService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProductSV\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProductSV\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ProductSV\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AccountService\AccountService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AccountService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AccountService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\AccountService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\OrderService\OrderService.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\OrderService\configuration91.svcinfo" />
@@ -398,6 +373,36 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\OrderService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CategoryService\CategoryService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CategoryService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CategoryService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CategoryService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\GroupService\GroupService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\GroupService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\GroupService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\GroupService\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using BookStoreWinform.ProductSV;
 using BookStoreWinform.CategoryService;
 using System.Threading;
+using System.Xml.Linq;
 using System.Reflection;
 
 namespace BookStoreWinform
@@ -38,7 +39,7 @@ namespace BookStoreWinform
             categories = svCat.findAll();
             initComboBox();
             showProduct(0);
-            bindData();
+            bindData(products);
         }
 
         private void btnCapnhat_Click(object sender, EventArgs e)
@@ -46,7 +47,7 @@ namespace BookStoreWinform
             gvProduct.DataSource = null;
             cbLoai.DataSource = null;
             products = sv.findAll();
-            bindData();
+            bindData(products);
             cbLoai.SelectedIndex = 0;
         }
 
@@ -76,7 +77,7 @@ namespace BookStoreWinform
                 lblTinhtrang.Text = "Bị ẩn";
                 lblTinhtrang.ForeColor = Color.Red;
             }
-            foreach (var element in p.DescriptionXML.Elements())
+            foreach (var element in XElement.Parse(p.Description).Elements())
             {
                 gvDescription.Rows.Add(element.Attribute("title").Value, element.Value);
             }
@@ -94,7 +95,7 @@ namespace BookStoreWinform
                 
         }
 
-        private void bindData()
+        private void bindData(Product[] products)
         {
             var arrDisplay = products.Select(a => new { a.Name, a.Price, a.Quantity, a.PromotionPrice, a.Promotion }).ToArray();
             gvProduct.DataSource = arrDisplay;
@@ -158,8 +159,8 @@ namespace BookStoreWinform
             if (cbLoai.SelectedIndex > 0)
             {
                 gvProduct.DataSource = null;
-                products = sv.findProuctsByCategory(categories[cbLoai.SelectedIndex - 1].id);
-                bindData();
+                products = sv.findProductsByCategory(categories[cbLoai.SelectedIndex - 1].id);
+                bindData(products);
             }
         }
 
@@ -182,7 +183,7 @@ namespace BookStoreWinform
         {
             initComboBox();
             showProduct(0);
-            bindData();
+            bindData(products);
         }
 
         private void threadInit_ProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -193,6 +194,15 @@ namespace BookStoreWinform
         private void threadLoadImage_DoWork(object sender, DoWorkEventArgs e)
         {
             pictureBox1.Load(p.Thumbnail);
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            gvProduct.DataSource = null;
+            string search = txtSearch.Text;
+            Product[] temps = products;
+            temps = products.Where(p => p.Name.Contains(search)).ToArray();
+            bindData(temps);
         }
 
     }

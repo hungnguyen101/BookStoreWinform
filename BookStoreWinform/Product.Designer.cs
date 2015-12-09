@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnCapnhat = new System.Windows.Forms.Button();
             this.gvProduct = new System.Windows.Forms.DataGridView();
             this.lblName = new System.Windows.Forms.Label();
@@ -53,6 +53,7 @@
             this.threadLoadImage = new System.ComponentModel.BackgroundWorker();
             this.lblModified = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.gvProduct)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvDescription)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -61,7 +62,7 @@
             // 
             // btnCapnhat
             // 
-            this.btnCapnhat.Location = new System.Drawing.Point(22, 24);
+            this.btnCapnhat.Location = new System.Drawing.Point(451, 24);
             this.btnCapnhat.Name = "btnCapnhat";
             this.btnCapnhat.Size = new System.Drawing.Size(125, 23);
             this.btnCapnhat.TabIndex = 0;
@@ -136,7 +137,7 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(153, 24);
+            this.btnThem.Location = new System.Drawing.Point(586, 24);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(104, 23);
             this.btnThem.TabIndex = 12;
@@ -154,14 +155,14 @@
             this.gvDescription.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.title,
             this.value});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.gvDescription.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.gvDescription.DefaultCellStyle = dataGridViewCellStyle1;
             this.gvDescription.Location = new System.Drawing.Point(451, 214);
             this.gvDescription.Name = "gvDescription";
             this.gvDescription.ReadOnly = true;
@@ -274,11 +275,20 @@
             this.label5.TabIndex = 19;
             this.label5.Text = " Ngày sửa:";
             // 
+            // txtSearch
+            // 
+            this.txtSearch.Location = new System.Drawing.Point(22, 27);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(235, 20);
+            this.txtSearch.TabIndex = 21;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
+            // 
             // frmProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(827, 547);
+            this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.lblModified);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.pbLoadInitForm);
@@ -333,6 +343,7 @@
         private System.ComponentModel.BackgroundWorker threadLoadImage;
         private System.Windows.Forms.Label lblModified;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtSearch;
     }
 }
 

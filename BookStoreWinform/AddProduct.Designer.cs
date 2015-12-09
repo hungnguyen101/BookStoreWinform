@@ -42,9 +42,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtGiagiam = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.cbKhuyenmai = new System.Windows.Forms.ComboBox();
-            this.btnThemkhuyenmai = new System.Windows.Forms.Button();
             this.gvDescription = new System.Windows.Forms.DataGridView();
             this.title = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.value = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,7 +60,7 @@
             this.picThumbnail.Image = global::BookStoreWinform.Properties.Resources.thumbnail;
             this.picThumbnail.Location = new System.Drawing.Point(10, 31);
             this.picThumbnail.Name = "picThumbnail";
-            this.picThumbnail.Size = new System.Drawing.Size(166, 236);
+            this.picThumbnail.Size = new System.Drawing.Size(166, 189);
             this.picThumbnail.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.picThumbnail.TabIndex = 0;
             this.picThumbnail.TabStop = false;
@@ -180,32 +177,6 @@
             this.label7.TabIndex = 13;
             this.label7.Text = " VND";
             // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(182, 249);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(65, 13);
-            this.label8.TabIndex = 14;
-            this.label8.Text = "Khuyến mãi:";
-            // 
-            // cbKhuyenmai
-            // 
-            this.cbKhuyenmai.FormattingEnabled = true;
-            this.cbKhuyenmai.Location = new System.Drawing.Point(283, 246);
-            this.cbKhuyenmai.Name = "cbKhuyenmai";
-            this.cbKhuyenmai.Size = new System.Drawing.Size(148, 21);
-            this.cbKhuyenmai.TabIndex = 15;
-            // 
-            // btnThemkhuyenmai
-            // 
-            this.btnThemkhuyenmai.Location = new System.Drawing.Point(439, 244);
-            this.btnThemkhuyenmai.Name = "btnThemkhuyenmai";
-            this.btnThemkhuyenmai.Size = new System.Drawing.Size(63, 23);
-            this.btnThemkhuyenmai.TabIndex = 16;
-            this.btnThemkhuyenmai.Text = "Tạo mới";
-            this.btnThemkhuyenmai.UseVisualStyleBackColor = true;
-            // 
             // gvDescription
             // 
             this.gvDescription.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -214,9 +185,9 @@
             this.gvDescription.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.title,
             this.value});
-            this.gvDescription.Location = new System.Drawing.Point(10, 284);
+            this.gvDescription.Location = new System.Drawing.Point(10, 239);
             this.gvDescription.Name = "gvDescription";
-            this.gvDescription.Size = new System.Drawing.Size(492, 174);
+            this.gvDescription.Size = new System.Drawing.Size(492, 219);
             this.gvDescription.TabIndex = 17;
             // 
             // title
@@ -279,9 +250,6 @@
             this.Controls.Add(this.chbHienthi);
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.gvDescription);
-            this.Controls.Add(this.btnThemkhuyenmai);
-            this.Controls.Add(this.cbKhuyenmai);
-            this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtGiagiam);
             this.Controls.Add(this.label6);
@@ -324,9 +292,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtGiagiam;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.ComboBox cbKhuyenmai;
-        private System.Windows.Forms.Button btnThemkhuyenmai;
         private System.Windows.Forms.DataGridView gvDescription;
         private System.Windows.Forms.DataGridViewTextBoxColumn title;
         private System.Windows.Forms.DataGridViewTextBoxColumn value;

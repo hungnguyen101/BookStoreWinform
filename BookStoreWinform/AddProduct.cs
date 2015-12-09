@@ -65,7 +65,7 @@ namespace BookStoreWinform
                     }
                 }
 
-                foreach (var element in p.DescriptionXML.Elements())
+                foreach (var element in XElement.Parse(p.Description).Elements())
                 {
                     gvDescription.Rows.Add(element.Attribute("title").Value, element.Value);
                 }
@@ -123,8 +123,7 @@ namespace BookStoreWinform
             entity.Category = cats[cbLoai.SelectedIndex].id;
             entity.Name = txtName.Text;
             entity.Price = Convert.ToDecimal(txtDongia.Text);
-            entity.Promotion = Convert.ToInt32(cbKhuyenmai.SelectedValue);
-            entity.PromotionPrice = Convert.ToDecimal(txtGiagiam.Text);
+            entity.PromotionPrice = (txtGiagiam.Text.Length > 0) ? Convert.ToDecimal(txtGiagiam.Text) : 0;
             entity.Quantity = Convert.ToInt32(numSoluong.Value);
             entity.Status = chbHoatdong.Checked;
             entity.ShowOnHome = chbHienthi.Checked;
@@ -142,7 +141,7 @@ namespace BookStoreWinform
 
             entity.Description = sb.ToString();
             XElement xmlTree = XElement.Parse(sb.ToString());
-            entity.DescriptionXML = xmlTree;
+            //entity.DescriptionXML = xmlTree;
         }
 
         private void picThumbnail_Click(object sender, EventArgs e)

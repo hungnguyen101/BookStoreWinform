@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BookStoreWinform.AccountService;
 using BookStoreWinform.GroupService;
+using BookStoreWinform.OrderService;
 
 namespace BookStoreWinform
 {
@@ -16,6 +17,7 @@ namespace BookStoreWinform
     {
         private AccountClient accountSV = null;
         private GroupClient groupSV = null;
+        private OrderClient orderSV = null;
         Account account = null;
         Group[] groups;
 
@@ -24,6 +26,7 @@ namespace BookStoreWinform
             InitializeComponent();
             accountSV = new AccountClient();
             groupSV = new GroupClient();
+            orderSV = new OrderClient();
             threadInit.RunWorkerAsync(id);
             
         }
@@ -64,6 +67,8 @@ namespace BookStoreWinform
             gvThongtin.Rows.Add("Skype", account.Skype);
             if (account.Avatar != "" || account.Avatar != null)
                 threadLoadImage.RunWorkerAsync();
+
+            gvHoadon.DataSource = orderSV.findOrderByAccount(account.id).Select(x => new { x.id, x.CreatedAt, x.Status }).ToList();
         }
 
         private void threadLoadImage_DoWork(object sender, DoWorkEventArgs e)

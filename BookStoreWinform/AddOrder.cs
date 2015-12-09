@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BookStoreWinform.AccountService;
 using BookStoreWinform.OrderService;
+using BookStoreWinform.ProductSV;
 
 namespace BookStoreWinform
 {
@@ -16,6 +17,7 @@ namespace BookStoreWinform
     {
         private AccountClient accountService = null;
         private OrderClient orderService = null;
+        private ProductClient productService = null;
         List<OrderService.DetailOrder> detail = null;
 
         Account customer;
@@ -26,6 +28,7 @@ namespace BookStoreWinform
 
             accountService = new AccountClient();
             orderService = new OrderClient();
+            productService = new ProductClient();
             detail = new List<DetailOrder>();
         }
 
@@ -39,12 +42,33 @@ namespace BookStoreWinform
                 order = new OrderService.Order() { Account = customer.id, CreatedBy = CurrentUser.Username };
             else
                 order = new OrderService.Order() { CreatedBy = CurrentUser.Username };
-            for (int i = 0; i < gvProduct.Rows.Count; i++)
+            int productId = 0, quantity = 0;
+            Product p = null;
+            bool err = false;
+            for (int i = 0; i < gvProduct.Rows.Count - 1; i++)
             {
-                detail.Add(new DetailOrder() { ProductId = Convert.ToInt32(gvProduct.Rows[i].Cells[0].Value), Quantity = Convert.ToInt32(gvProduct.Rows[i].Cells[1].Value) });
+                productId = Convert.ToInt32(gvProduct.Rows[i].Cells[0].Value);
+                quantity = Convert.ToInt32(gvProduct.Rows[i].Cells[1].Value);
+                p = productService.findById(productId);
+                if (p.Quantity >= quantity)
+                    detail.Add(new DetailOrder() { ProductId = productId, Quantity = quantity });
+                else
+                {
+                    err = true;
+                    break;
+                }
             }
-            orderService.insert(order, detail.ToArray());
+            if (!err)
+            {
+                orderService.insert(order, detail.ToArray());
+                
+            }
+            else
+            {
+                MessageBox.Show("Số lượng sản phẩm " + p.Name + " có mã " + p.id + " vượt quá số lượng trong kho.");
+            }
             btnAdd.Enabled = true;
+            
         }
     }
 }

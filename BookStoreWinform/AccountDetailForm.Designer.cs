@@ -159,6 +159,8 @@
             // 
             // gvHoadon
             // 
+            this.gvHoadon.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.gvHoadon.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.gvHoadon.BackgroundColor = System.Drawing.Color.White;
             this.gvHoadon.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gvHoadon.Location = new System.Drawing.Point(0, 0);
